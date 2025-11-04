@@ -1,0 +1,27 @@
+{
+  "name": "axiom-playground",
+  "version": "1.0.0",
+  "description": "Interactive playground for @progestionsoft/axiom utility library",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "preview": "nuxi preview",
+    "generate": "nuxi generate",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "nuxt": "^3.20.0",
+    "vue": "^3.5.22",
+    "@progestionsoft/axiom": "workspace:*"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.7.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@types/node": "^20.19.24",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}

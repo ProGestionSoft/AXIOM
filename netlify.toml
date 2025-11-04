@@ -1,0 +1,3 @@
+[build]
+  command = "pnpm install && pnpm run build && cd playground && pnpm run generate"
+  publish = "playground/.output/public"

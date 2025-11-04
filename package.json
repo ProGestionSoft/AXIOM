@@ -1,0 +1,60 @@
+{
+  "name": "@progestionsoft/axiom",
+  "version": "1.0.0",
+  "description": "Modern utility library for JavaScript/TypeScript developers",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "build:playground": "pnpm build && pnpm --filter axiom-playground build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "utilities",
+    "helpers",
+    "typescript",
+    "javascript"
+  ],
+  "author": "ProGestionSoft",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProGestionSoft/axiom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ProGestionSoft/axiom/issues"
+  },
+  "homepage": "https://github.com/ProGestionSoft/axiom#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.1.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.3",
+    "vitest": "^1.0.0"
+  }
+}
