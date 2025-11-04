@@ -9,6 +9,15 @@ export default defineNuxtConfig({
   },
 
   ssr: false,
+  
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/sitemap.xml', '/robots.txt'],
+      ignore: ['/admin']
+    },
+    static: true
+  },
 
   build: {
     transpile: ['@progestionsoft/axiom']
