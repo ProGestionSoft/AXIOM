@@ -10,10 +10,6 @@ export default defineNuxtConfig({
 
   ssr: false,
 
-  nitro: {
-    preset: 'netlify-static',
-  },
-
   build: {
     transpile: ['@progestionsoft/axiom']
   },
