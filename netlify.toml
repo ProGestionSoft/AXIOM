@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install --recursive && pnpm --filter=root run build && pnpm --filter=axiom-playground run generate"
+  command = "pnpm install && pnpm run build:playground:generate"
   publish = "playground/.output/public"
 
 [build.environment]
