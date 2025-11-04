@@ -1,3 +1,3 @@
 [build]
-  command = "pnpm install && pnpm run build && cd playground && pnpm run generate"
+  command = "pnpm install && pnpm run build && pnpm run build:playground"
   publish = "playground/.output/public"
