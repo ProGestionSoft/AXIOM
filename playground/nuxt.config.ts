@@ -11,12 +11,12 @@ export default defineNuxtConfig({
   ssr: false,
   
   nitro: {
+    preset: 'netlify-static',
     prerender: {
       crawlLinks: true,
       routes: ['/sitemap.xml', '/robots.txt'],
       ignore: ['/admin']
-    },
-    static: true
+    }
   },
 
   build: {
