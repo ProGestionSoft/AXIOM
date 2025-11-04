@@ -1,3 +1,6 @@
 [build]
-  command = "pnpm install && pnpm run build && pnpm run build:playground"
+  command = "pnpm install --recursive && pnpm --filter=root run build && pnpm --filter=axiom-playground run generate"
   publish = "playground/.output/public"
+
+[build.environment]
+  NODE_VERSION = "20"
