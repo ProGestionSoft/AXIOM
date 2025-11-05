@@ -73,8 +73,7 @@ export function groupBy<T>(
 ): Record<string, T[]> {
   return arr.reduce(
     (result, item) => {
-      const groupKey =
-        typeof key === 'function' ? String(key(item)) : String(item[key]);
+      const groupKey = typeof key === 'function' ? String(key(item)) : String(item[key]);
 
       if (!result[groupKey]) {
         result[groupKey] = [];

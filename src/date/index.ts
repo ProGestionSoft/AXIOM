@@ -52,9 +52,7 @@ export function timeAgo(date: Date | string | number): string {
     const interval = Math.floor(absSeconds / secondsInInterval);
     if (interval >= 1) {
       const plural = interval !== 1 ? 's' : '';
-      return isFuture
-        ? `in ${interval} ${name}${plural}`
-        : `${interval} ${name}${plural} ago`;
+      return isFuture ? `in ${interval} ${name}${plural}` : `${interval} ${name}${plural} ago`;
     }
   }
 

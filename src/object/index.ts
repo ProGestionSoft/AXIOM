@@ -42,10 +42,7 @@ export function deepClone<T>(obj: T): T {
  * merge({ a: 1 }, { b: 2 }, { c: 3 }) // returns { a: 1, b: 2, c: 3 }
  * merge({ a: { x: 1 } }, { a: { y: 2 } }) // returns { a: { x: 1, y: 2 } }
  */
-export function merge<T extends Record<string, unknown>>(
-  target: T,
-  ...sources: Partial<T>[]
-): T {
+export function merge<T extends Record<string, unknown>>(target: T, ...sources: Partial<T>[]): T {
   if (!sources.length) return target;
 
   const result = deepClone(target);
