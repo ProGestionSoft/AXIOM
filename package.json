@@ -2,7 +2,7 @@
   "name": "@progestionsoft/axiom",
   "version": "1.0.0",
   "description": "Modern utility library for JavaScript/TypeScript developers",
-  "private": true,
+  "private": false,
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -14,9 +14,10 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",

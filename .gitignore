@@ -14,6 +14,7 @@ dist-ssr
 
 .env
 NPM_PUBLICATION_GUIDE.md
+GETTING_STARTED.md
 
 # Editor directories and files
 .vscode/*
