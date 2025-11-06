@@ -12,9 +12,10 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@progestionsoft/axiom": "workspace:*",
+    "@tabler/icons-vue": "^3.35.0",
     "nuxt": "^3.20.0",
-    "vue": "^3.5.22",
-    "@progestionsoft/axiom": "workspace:*"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.7.0",

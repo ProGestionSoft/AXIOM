@@ -31,10 +31,10 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "utilities",
-    "helpers",
-    "typescript",
-    "javascript"
+    "utilities", "helpers", "typescript", "javascript",
+    "String", "Number", "Date", "Object", "Array",
+    "slugify", "truncate", "formatDate","timeAgo",
+    "deepClone", "merge", "omit"
   ],
   "author": "ProGestionSoft",
   "license": "MIT",
@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/ProGestionSoft/axiom/issues"
   },
-  "homepage": "https://github.com/ProGestionSoft/axiom#readme",
+  "homepage": "https://pgs-axiom.netlify.app/",
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@typescript-eslint/eslint-plugin": "^6.13.0",

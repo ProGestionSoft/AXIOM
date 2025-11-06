@@ -1,106 +1,314 @@
 <template>
-  <div class="space-y-12">
-    <div class="text-center">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Axiom Playground</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Interactive playground to test all utility functions from the @progestionsoft/axiom library
-      </p>
+  <div class="relative">
+    <!-- Hero Section avec gradient moderne -->
+    <div class="relative overflow-hidden pt-8">
+      <!-- Header Content -->
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <!-- Badge -->
+          <div
+            class="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+            <IconCircleCheckFilled class="h-4 w-4" />
+            <span>Interactive Testing Environment</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+            Axiom
+            <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Playground</span>
+          </h1>
+
+          <!-- Description -->
+          <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-slate-600">
+            Discover and test powerful utility functions from the
+            <span class="font-semibold text-slate-900">@progestionsoft/axiom</span> library.
+            Interactive examples with real-time results.
+          </p>
+
+          <!-- Stats -->
+          <div class="mx-auto mt-10 flex max-w-md items-center justify-center gap-8 text-center">
+            <div>
+              <div class="text-3xl font-bold text-slate-900">{{ totalFunctions }}+</div>
+              <div class="text-sm text-slate-600">Functions</div>
+            </div>
+            <div class="h-12 w-px bg-slate-200"></div>
+            <div>
+              <div class="text-3xl font-bold text-slate-900">{{ utilityCards.length }}</div>
+              <div class="text-sm text-slate-600">Categories</div>
+            </div>
+            <div class="h-12 w-px bg-slate-200"></div>
+            <div>
+              <div class="text-3xl font-bold text-slate-900">100%</div>
+              <div class="text-sm text-slate-600">Type Safe</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <NuxtLink
-        to="/string"
-        class="card hover:shadow-lg hover:border-primary-300 transition-all cursor-pointer group"
-      >
-        <div class="flex items-start justify-between mb-3">
-          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-            <span class="text-2xl">📝</span>
-          </div>
-          <span class="text-2xl">→</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">String Utilities</h3>
-        <p class="text-gray-600 text-sm mb-4">slugify, capitalize, truncate, randomString</p>
-        <div class="flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">4 functions</span>
-        </div>
-      </NuxtLink>
-
-      <NuxtLink
-        to="/number"
-        class="card hover:shadow-lg hover:border-primary-300 transition-all cursor-pointer group"
-      >
-        <div class="flex items-start justify-between mb-3">
-          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
-            <span class="text-2xl">🔢</span>
-          </div>
-          <span class="text-2xl">→</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Number Utilities</h3>
-        <p class="text-gray-600 text-sm mb-4">formatNumber, clamp, roundTo, percent</p>
-        <div class="flex gap-2 flex-wrap">
-          <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">4 functions</span>
-        </div>
-      </NuxtLink>
-
-      <NuxtLink
-        to="/date"
-        class="card hover:shadow-lg hover:border-primary-300 transition-all cursor-pointer group"
-      >
-        <div class="flex items-start justify-between mb-3">
-          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-            <span class="text-2xl">📅</span>
-          </div>
-          <span class="text-2xl">→</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Date Utilities</h3>
-        <p class="text-gray-600 text-sm mb-4">formatDate, timeAgo, isValidDate</p>
-        <div class="flex gap-2 flex-wrap">
-          <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">3 functions</span>
-        </div>
-      </NuxtLink>
-
-      <NuxtLink
-        to="/object"
-        class="card hover:shadow-lg hover:border-primary-300 transition-all cursor-pointer group"
-      >
-        <div class="flex items-start justify-between mb-3">
-          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-            <span class="text-2xl">🎁</span>
-          </div>
-          <span class="text-2xl">→</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Object Utilities</h3>
-        <p class="text-gray-600 text-sm mb-4">deepClone, merge, omit, pick</p>
-        <div class="flex gap-2 flex-wrap">
-          <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded">4 functions</span>
-        </div>
-      </NuxtLink>
-
-      <NuxtLink
-        to="/array"
-        class="card hover:shadow-lg hover:border-primary-300 transition-all cursor-pointer group"
-      >
-        <div class="flex items-start justify-between mb-3">
-          <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors">
-            <span class="text-2xl">📚</span>
-          </div>
-          <span class="text-2xl">→</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Array Utilities</h3>
-        <p class="text-gray-600 text-sm mb-4">unique, chunk, flatten, groupBy</p>
-        <div class="flex gap-2 flex-wrap">
-          <span class="text-xs bg-red-100 text-red-700 px-2 py-1 rounded">4 functions</span>
-        </div>
-      </NuxtLink>
+    <!-- Utility Cards Grid -->
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <UtilityCard v-for="card in utilityCards" :key="card.path" :card="card" />
+      </div>
     </div>
 
-    <div class="bg-primary-50 border border-primary-200 rounded-lg p-8 text-center">
-      <h3 class="text-2xl font-bold text-gray-900 mb-2">Ready to use in your project?</h3>
-      <p class="text-gray-700 mb-4">
-        Install
-        <a href="https://www.npmjs.com/package/@progestionsoft/axiom" class="text-primary-600 hover:underline">@progestionsoft/axiom via npm</a>
-      </p>
-      <code class="code-block inline-block">npm install @progestionsoft/axiom</code>
+    <!-- CTA Section -->
+    <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-12 shadow-2xl sm:px-16 lg:py-16">
+        <!-- Decorative elements -->
+        <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-500 opacity-10 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-cyan-500 opacity-10 blur-3xl"></div>
+
+        <div class="relative">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to boost your productivity?
+            </h2>
+            <p class="mb-8 text-lg leading-relaxed text-slate-300">
+              Install <span class="font-semibold text-white">@progestionsoft/axiom</span> in your project and start
+              using powerful utilities right away.
+            </p>
+
+            <!-- Installation Command -->
+            <div class="mx-auto max-w-lg rounded-xl bg-slate-950/50 p-6 backdrop-blur-sm ring-1 ring-slate-700">
+              <div class="mb-2 flex items-center justify-between">
+                <span class="text-xs font-medium text-slate-400">INSTALLATION</span>
+                <button :class="[
+                  'rounded-md px-2 py-1 text-xs font-medium transition-all duration-300',
+                  copyState === 'idle'
+                    ? 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    : copyState === 'success'
+                      ? 'bg-emerald-800 text-emerald-300'
+                      : 'bg-red-800 text-red-300'
+                ]" @click="copyToClipboard('npm install @progestionsoft/axiom')" :disabled="copyState === 'success'">
+                  <span v-if="copyState === 'idle'">Copy</span>
+                  <span v-else-if="copyState === 'success'" class="flex items-center gap-1">
+                    <IconCheck class="h-3 w-3" />
+                    Copied!
+                  </span>
+                  <span v-else class="flex items-center gap-1">
+                    <IconX class="h-3 w-3" />
+                    Failed
+                  </span>
+                </button>
+              </div>
+              <code :class="[
+                'block font-mono text-sm transition-all duration-300',
+                copyAnimation ? 'text-emerald-400 scale-105' : 'text-emerald-400'
+              ]" @animationend="copyAnimation = false">
+                npm install @progestionsoft/axiom
+              </code>
+            </div>
+
+            <!-- Links -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a href="https://www.npmjs.com/package/@progestionsoft/axiom" target="_blank"
+                class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-lg transition-transform duration-200 hover:scale-105">
+                <IconBrandNpm class="h-5 w-5" />
+                View on NPM
+              </a>
+              <a href="https://github.com/progestionsoft/axiom" target="_blank"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition-colors hover:text-white">
+                <IconBrandGithub class="h-5 w-5" />
+                GitHub Repository
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Features Section -->
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div class="text-center">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+            <IconBolt class="h-6 w-6 text-blue-600" />
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-slate-900">Lightning Fast</h3>
+          <p class="text-sm text-slate-600">Optimized utilities with minimal overhead</p>
+        </div>
+
+        <div class="text-center">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
+            <IconShieldCheck class="h-6 w-6 text-green-600" />
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-slate-900">Type Safe</h3>
+          <p class="text-sm text-slate-600">Full TypeScript support with strict types</p>
+        </div>
+
+        <div class="text-center">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-amber-100">
+            <IconAdjustmentsAlt class="h-6 w-6 text-amber-600" />
+          </div>
+          <h3 class="mb-2 text-lg font-semibold text-slate-900">Zero Dependencies</h3>
+          <p class="text-sm text-slate-600">Lightweight with no external dependencies</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <transition name="toast">
+      <div v-if="showToast"
+        class="fixed top-4 right-4 z-50 flex items-center gap-3 rounded-lg bg-emerald-50 px-4 py-3 shadow-lg ring-1 ring-emerald-200">
+        <div class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500">
+          <IconCheck class="h-4 w-4 text-white" />
+        </div>
+        <div>
+          <p class="text-sm font-medium text-emerald-900">Copied to clipboard!</p>
+          <p class="text-xs text-emerald-700">npm install @progestionsoft/axiom</p>
+        </div>
+        <button @click="showToast = false" class="rounded p-1 text-emerald-500 hover:bg-emerald-100">
+          <IconX class="h-4 w-4" />
+        </button>
+      </div>
+    </transition>
   </div>
 </template>
+
+<script setup lang="ts">
+import { IconBrandGithub, IconBrandNpm, IconCircleCheckFilled, IconLetterA, IconNumber, IconCalendar, IconBox,
+  IconList, IconBolt, IconShieldCheck, IconAdjustmentsAlt, IconCheck, IconX } from '@tabler/icons-vue'
+
+// Types
+interface UtilityCard {
+  path: string;
+  label: string;
+  count: number;
+  icon: any;
+  iconColor: string;
+  iconBg: string;
+  bgGradient: string;
+  description: string;
+  tags: string[];
+  color: string;
+}
+
+// Data
+const utilityCards = ref<UtilityCard[]>([
+  {
+    path: '/string',
+    label: 'String Utilities',
+    count: 4,
+    icon: IconLetterA,
+    iconColor: 'blue-700',
+    iconBg: 'bg-blue-100',
+    bgGradient: 'from-blue-600 to-blue-700',
+    description: 'Manipulate and transform strings with ease',
+    tags: ['slugify', 'capitalize', 'truncate', '+1 more'],
+    color: 'blue'
+  },
+  {
+    path: '/number',
+    label: 'Number Utilities',
+    count: 4,
+    icon: IconNumber,
+    iconColor: 'emerald-700',
+    iconBg: 'bg-emerald-100',
+    bgGradient: 'from-emerald-600 to-emerald-700',
+    description: 'Format, calculate and transform numbers',
+    tags: ['formatNumber', 'clamp', 'roundTo', '+1 more'],
+    color: 'emerald'
+  },
+  {
+    path: '/date',
+    label: 'Date Utilities',
+    count: 3,
+    icon: IconCalendar,
+    iconColor: 'amber-700',
+    iconBg: 'bg-amber-100',
+    bgGradient: 'from-amber-600 to-amber-700',
+    description: 'Parse, format and manipulate dates',
+    tags: ['formatDate', 'timeAgo', 'isValidDate'],
+    color: 'amber'
+  },
+  {
+    path: '/object',
+    label: 'Object Utilities',
+    count: 4,
+    icon: IconBox,
+    iconColor: 'rose-700',
+    iconBg: 'bg-rose-100',
+    bgGradient: 'from-rose-600 to-rose-700',
+    description: 'Deep clone, merge and transform objects',
+    tags: ['deepClone', 'merge', 'omit', '+1 more'],
+    color: 'rose'
+  },
+  {
+    path: '/array',
+    label: 'Array Utilities',
+    count: 4,
+    icon: IconList,
+    iconColor: 'violet-700',
+    iconBg: 'bg-violet-100',
+    bgGradient: 'from-violet-600 to-violet-700',
+    description: 'Manipulate arrays with powerful functions',
+    tags: ['unique', 'chunk', 'flatten', '+1 more'],
+    color: 'violet'
+  }
+]);
+
+// Computed
+const totalFunctions = computed(() => {
+  return utilityCards.value.reduce((total, card) => total + card.count, 0);
+});
+
+// Copy
+const copyState = ref<'idle' | 'success' | 'error'>('idle');
+const copyAnimation = ref(false);
+const showToast = ref(false);
+
+const copyToClipboard = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    copyState.value = 'success';
+    copyAnimation.value = true;
+    showToast.value = true;
+
+    setTimeout(() => {
+      copyState.value = 'idle';
+    }, 2000);
+
+    setTimeout(() => {
+      showToast.value = false;
+    }, 3000);
+
+  } catch (err) {
+    console.error('Failed to copy:', err);
+    copyState.value = 'error';
+
+    setTimeout(() => {
+      copyState.value = 'idle';
+    }, 2000);
+  }
+};
+</script>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.scale-105 {
+  transform: scale(1.05);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+</style>

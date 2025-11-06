@@ -6,7 +6,22 @@ export { formatDate, timeAgo, isValidDate } from './date/index.js';
 
 export { deepClone, merge, omit, pick } from './object/index.js';
 
-export { unique, chunk, flatten, groupBy } from './array/index.js';
+export {
+  unique,
+  chunk,
+  flatten,
+  groupBy,
+  paginate,
+  type PaginationType,
+  type PaginationResult,
+  type OffsetPaginationResult,
+  type PagePaginationResult,
+  type CursorPaginationResult,
+  type OffsetPaginationOptions,
+  type PagePaginationOptions,
+  type CursorPaginationOptions,
+  type PaginationOptions,
+} from './array/index.js';
 
 import * as string from './string/index.js';
 import * as number from './number/index.js';

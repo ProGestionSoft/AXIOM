@@ -1,10 +1,5 @@
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-3xl font-bold text-gray-900 mb-2">Number Utilities</h2>
-      <p class="text-gray-600">Test number formatting and manipulation functions in real-time</p>
-    </div>
-
     <div class="space-y-6">
       <div class="card">
         <h3 class="text-lg font-semibold text-gray-900 mb-4">formatNumber</h3>
@@ -151,6 +146,10 @@
 
 <script setup lang="ts">
 import { formatNumber, clamp, roundTo, percent } from '@progestionsoft/axiom';
+
+definePageMeta({
+  layout: 'function'
+});
 
 const formatValue = ref(1234567.89);
 const formatDecimals = ref(2);

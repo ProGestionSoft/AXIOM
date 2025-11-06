@@ -1,10 +1,5 @@
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-3xl font-bold text-gray-900 mb-2">Object Utilities</h2>
-      <p class="text-gray-600">Test object manipulation functions in real-time</p>
-    </div>
-
     <div class="space-y-6">
       <div class="card">
         <h3 class="text-lg font-semibold text-gray-900 mb-4">deepClone</h3>
@@ -123,6 +118,10 @@
 
 <script setup lang="ts">
 import { deepClone, merge, omit, pick } from '@progestionsoft/axiom';
+
+definePageMeta({
+  layout: 'function'
+});
 
 const deepCloneInput = ref('{"a": 1, "b": {"c": 2}}');
 const deepCloneResult = ref('');
