@@ -28,12 +28,12 @@
           <!-- Stats -->
           <div class="mx-auto mt-10 flex max-w-md items-center justify-center gap-8 text-center">
             <div>
-              <div class="text-3xl font-bold text-slate-900">{{ totalFunctions }}+</div>
+              <div class="text-3xl font-bold text-slate-900">19+</div>
               <div class="text-sm text-slate-600">Functions</div>
             </div>
             <div class="h-12 w-px bg-slate-200"></div>
             <div>
-              <div class="text-3xl font-bold text-slate-900">{{ utilityCards.length }}</div>
+              <div class="text-3xl font-bold text-slate-900">5</div>
               <div class="text-sm text-slate-600">Categories</div>
             </div>
             <div class="h-12 w-px bg-slate-200"></div>
@@ -49,7 +49,7 @@
     <!-- Utility Cards Grid -->
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <UtilityCard v-for="card in utilityCards" :key="card.path" :card="card" />
+        <UtilityCard />
       </div>
     </div>
 
@@ -57,7 +57,6 @@
     <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
       <div
         class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-12 shadow-2xl sm:px-16 lg:py-16">
-        <!-- Decorative elements -->
         <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-500 opacity-10 blur-3xl"></div>
         <div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-cyan-500 opacity-10 blur-3xl"></div>
 
@@ -169,93 +168,18 @@
 </template>
 
 <script setup lang="ts">
-import { IconBrandGithub, IconBrandNpm, IconCircleCheckFilled, IconLetterA, IconNumber, IconCalendar, IconBox,
-  IconList, IconBolt, IconShieldCheck, IconAdjustmentsAlt, IconCheck, IconX } from '@tabler/icons-vue'
+import {
+  IconBrandGithub,
+  IconBrandNpm,
+  IconCircleCheckFilled,
+  IconBolt,
+  IconShieldCheck,
+  IconAdjustmentsAlt,
+  IconCheck,
+  IconX
+} from '@tabler/icons-vue'
 
-// Types
-interface UtilityCard {
-  path: string;
-  label: string;
-  count: number;
-  icon: any;
-  iconColor: string;
-  iconBg: string;
-  bgGradient: string;
-  description: string;
-  tags: string[];
-  color: string;
-}
-
-// Data
-const utilityCards = ref<UtilityCard[]>([
-  {
-    path: '/string',
-    label: 'String Utilities',
-    count: 4,
-    icon: IconLetterA,
-    iconColor: 'blue-700',
-    iconBg: 'bg-blue-100',
-    bgGradient: 'from-blue-600 to-blue-700',
-    description: 'Manipulate and transform strings with ease',
-    tags: ['slugify', 'capitalize', 'truncate', '+1 more'],
-    color: 'blue'
-  },
-  {
-    path: '/number',
-    label: 'Number Utilities',
-    count: 4,
-    icon: IconNumber,
-    iconColor: 'emerald-700',
-    iconBg: 'bg-emerald-100',
-    bgGradient: 'from-emerald-600 to-emerald-700',
-    description: 'Format, calculate and transform numbers',
-    tags: ['formatNumber', 'clamp', 'roundTo', '+1 more'],
-    color: 'emerald'
-  },
-  {
-    path: '/date',
-    label: 'Date Utilities',
-    count: 3,
-    icon: IconCalendar,
-    iconColor: 'amber-700',
-    iconBg: 'bg-amber-100',
-    bgGradient: 'from-amber-600 to-amber-700',
-    description: 'Parse, format and manipulate dates',
-    tags: ['formatDate', 'timeAgo', 'isValidDate'],
-    color: 'amber'
-  },
-  {
-    path: '/object',
-    label: 'Object Utilities',
-    count: 4,
-    icon: IconBox,
-    iconColor: 'rose-700',
-    iconBg: 'bg-rose-100',
-    bgGradient: 'from-rose-600 to-rose-700',
-    description: 'Deep clone, merge and transform objects',
-    tags: ['deepClone', 'merge', 'omit', '+1 more'],
-    color: 'rose'
-  },
-  {
-    path: '/array',
-    label: 'Array Utilities',
-    count: 4,
-    icon: IconList,
-    iconColor: 'violet-700',
-    iconBg: 'bg-violet-100',
-    bgGradient: 'from-violet-600 to-violet-700',
-    description: 'Manipulate arrays with powerful functions',
-    tags: ['unique', 'chunk', 'flatten', '+1 more'],
-    color: 'violet'
-  }
-]);
-
-// Computed
-const totalFunctions = computed(() => {
-  return utilityCards.value.reduce((total, card) => total + card.count, 0);
-});
-
-// Copy
+// Copy functionality
 const copyState = ref<'idle' | 'success' | 'error'>('idle');
 const copyAnimation = ref(false);
 const showToast = ref(false);
