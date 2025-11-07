@@ -63,19 +63,18 @@
     <footer class="bg-gray-900 text-gray-400 mt-12 sm:mt-20 border-t border-gray-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 text-center">
         <p class="text-sm sm:text-base">
+          © {{ new Date().getFullYear() }} AXIOM. 
           Built with <span class="text-primary-400">❤</span> by
           <a href="https://progestionsoft.netlify.app/about" target="_blank"
             class="text-primary-400 hover:text-primary-300 transition-colors ml-1">
             ProGestionSoft
           </a>
         </p>
-        <p class="mt-2 text-xs sm:text-sm">
-          Learn more at
-          <a href="https://github.com/progestionsoft/axiom" target="_blank"
-            class="text-primary-400 hover:text-primary-300 transition-colors ml-1 break-all sm:break-normal">
-            github.com/progestionsoft/axiom
-          </a>
-        </p>
+
+        <!-- Liens sociaux -->
+        <ul role="list" class="flex justify-center sm:justify-start space-x-4">
+          <SocialCustomLink />
+        </ul>
       </div>
     </footer>
   </div>
