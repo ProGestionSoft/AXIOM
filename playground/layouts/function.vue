@@ -28,75 +28,72 @@
           <IconX class="h-6 w-6 text-slate-900" v-else />
         </button>
 
-        <div class="flex items-center gap-3">
+        <div class="hidden lg:flex items-center gap-3">
           <a href="https://github.com/progestionsoft/axiom" target="_blank"
-            class="hidden rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:inline-flex">
+            class="rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 inline-flex">
             <IconBrandGithub class="h-5 w-5" />
           </a>
 
           <a href="https://www.npmjs.com/package/@progestionsoft/axiom" target="_blank"
-            class="hidden rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:inline-flex">
+            class="rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 inline-flex">
             <IconBrandNpm class="h-5 w-5" />
           </a>
         </div>
       </div>
     </header>
 
-    <div class="flex flex-1 overflow-hidden">
-      <aside
-        class="fixed inset-y-0 left-0 top-16 z-30 w-64 transform border-r border-slate-200 bg-white transition-transform duration-300 ease-in-out lg:static lg:top-0 lg:z-0 lg:transform-none lg:flex lg:flex-col"
-        :class="showMobileSidebar ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'">
-        <div class="flex flex-col h-full overflow-y-auto"> <nav class="flex-1 space-y-2 p-4">
-            <div class="mb-6 px-3">
-              <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Utilities</h2>
-            </div>
-
-            <NuxtLink v-for="item in navigationItems" :key="item.path" :to="item.path" @click="showMobileSidebar = false"
-              :class="[
-                'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
-                isCurrentPage(item.path)
-                  ? 'bg-gradient-to-r ' + item.bgGradient + ' text-white shadow-md'
-                  : 'text-slate-700 hover:bg-slate-100'
-              ]">
-              <div :class="[
-                'flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110',
-                isCurrentPage(item.path) ? item.bgGradient + ' text-white' : item.iconBg + ' text-' + item.iconColor
-              ]">
-                <component :is="item.icon" class="h-5 w-5" />
-              </div>
-
-              <div class="flex-1">
-                <p class="font-medium">{{ item.label }}</p>
-                <p :class="isCurrentPage(item.path) ? 'text-blue-100' : 'text-slate-500'" class="text-xs">
-                  {{ item.count }} functions
-                </p>
-              </div>
-
-              <IconCheck v-if="isCurrentPage(item.path)" class="h-5 w-5" />
-            </NuxtLink>
-          </nav>
-
-          <div class="border-t border-slate-200 bg-white p-4 mt-auto">
-            <div class="space-y-2">
-              <h2 class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Resources</h2>
-
-              <a href="https://www.npmjs.com/package/@progestionsoft/axiom" target="_blank"
-                class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">
-                <IconBrandNpm class="h-4 w-4" />
-                <span>NPM Package</span>
-              </a>
-
-              <a href="https://github.com/progestionsoft/axiom" target="_blank"
-                class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">
-                <IconBrandGithub class="h-4 w-4" />
-                <span>GitHub</span>
-              </a>
-            </div>
+    <div class="flex flex-1">
+      <aside class="fixed top-16 left-0 z-40 w-64 h-[calc(100vh-4rem)] border-r border-slate-200 bg-white flex flex-col"
+        :class="showMobileSidebar ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out'">
+        <div class="flex-1 overflow-y-auto p-4 space-y-2">
+          <div class="mb-6 px-3">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Utilities</h2>
           </div>
+
+          <NuxtLink v-for="item in navigationItems" :key="item.path" :to="item.path" @click="showMobileSidebar = false"
+            :class="[
+              'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+              isCurrentPage(item.path)
+                ? 'bg-gradient-to-r ' + item.bgGradient + ' text-white shadow-md'
+                : 'text-slate-700 hover:bg-slate-100'
+            ]">
+            <div :class="[
+              'flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110',
+              isCurrentPage(item.path) ? item.bgGradient + ' text-white' : item.iconBg + ' text-' + item.iconColor
+            ]">
+              <component :is="item.icon" class="h-5 w-5" />
+            </div>
+
+            <div class="flex-1">
+              <p class="font-medium">{{ item.label }}</p>
+              <p :class="isCurrentPage(item.path) ? 'text-blue-100' : 'text-slate-500'" class="text-xs">
+                {{ item.count }} functions
+              </p>
+            </div>
+
+            <IconCheck v-if="isCurrentPage(item.path)" class="h-5 w-5" />
+          </NuxtLink>
+        </div>
+
+        <!-- Section du bas toujours visible -->
+        <div class="border-t border-slate-200 bg-white p-4">
+          <h2 class="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Resources</h2>
+
+          <a href="https://www.npmjs.com/package/@progestionsoft/axiom" target="_blank"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">
+            <IconBrandNpm class="h-4 w-4" />
+            <span>NPM Package</span>
+          </a>
+
+          <a href="https://github.com/progestionsoft/axiom" target="_blank"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-100">
+            <IconBrandGithub class="h-4 w-4" />
+            <span>GitHub</span>
+          </a>
         </div>
       </aside>
 
-      <main class="flex-1 overflow-y-auto">
+      <main class="flex-1 overflow-y-auto pt-16 lg:pt-0">
         <div class="sticky top-0 z-30 border-b border-slate-200 bg-white px-4 py-6 sm:px-6 lg:px-8">
           <div class="mx-auto max-w-7xl">
             <div class="flex items-center justify-between gap-4">
@@ -123,16 +120,18 @@
 
     <transition name="fade">
       <div v-if="showMobileSidebar" @click="showMobileSidebar = false"
-        class="fixed inset-0 top-16 z-20 bg-black/50 lg:hidden"></div>
+        class="fixed inset-0 top-16 z-40 bg-black/50 lg:hidden"></div>
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router'; 
-import { IconArrowLeft, IconChevronRight, IconMenuDeep, IconX, IconBrandGithub, IconBrandNpm, IconCheck, IconLetterA, IconNumber,
-  IconCalendar, IconBox, IconList } from '@tabler/icons-vue'
+import { useRoute, useRouter } from 'vue-router';
+import {
+  IconArrowLeft, IconChevronRight, IconMenuDeep, IconX, IconBrandGithub, IconBrandNpm, IconCheck, IconLetterA, IconNumber,
+  IconCalendar, IconBox, IconList
+} from '@tabler/icons-vue'
 
 const showMobileSidebar = ref(false);
 const route = useRoute();
@@ -143,6 +142,7 @@ const goBack = () => {
 };
 
 const navigationItems = [
+  // ... (Liste navigationItems inchangée) ...
   {
     path: '/string',
     label: 'String Utilities',

@@ -61,20 +61,27 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 mt-12 sm:mt-20 border-t border-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 text-center">
-        <p class="text-sm sm:text-base">
-          © {{ new Date().getFullYear() }} AXIOM. 
-          Built with <span class="text-primary-400">❤</span> by
-          <a href="https://progestionsoft.netlify.app/about" target="_blank"
-            class="text-primary-400 hover:text-primary-300 transition-colors ml-1">
-            ProGestionSoft
-          </a>
-        </p>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+          <!-- Copyright -->
+          <p class="text-sm sm:text-base text-center sm:text-left order-2 sm:order-1">
+            © {{ new Date().getFullYear() }} AXIOM.
+            Built with <span class="text-primary-400">❤</span> by
+            <a href="https://progestionsoft.netlify.app/about" target="_blank"
+              class="text-primary-400 hover:text-primary-300 transition-colors ml-1">
+              ProGestionSoft
+            </a>
+            <br class="sm:hidden"> 
+            <span
+              class="text-gray-500 text-xs sm:text-sm">and maintained by the community
+            </span>
+          </p>
 
-        <!-- Liens sociaux -->
-        <ul role="list" class="flex justify-center sm:justify-start space-x-4">
-          <SocialCustomLink />
-        </ul>
+          <!-- Liens sociaux -->
+          <ul role="list" class="flex justify-center sm:justify-end order-1 sm:order-2">
+            <SocialCustomLink />
+          </ul>
+        </div>
       </div>
     </footer>
   </div>

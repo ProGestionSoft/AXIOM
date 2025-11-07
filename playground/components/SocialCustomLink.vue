@@ -25,6 +25,6 @@ const router = useRouter()
 
 // Réseaux sociaux
 const { displayedLinks, loading, error } = useSocialLinksDisplay({
-  filterMedia: ['linkedin', 'facebook', 'x', 'tiktok' ],
+  filterMedia: ['github', 'discord', 'x', 'youtube', 'tiktok' ],
 }); 
 </script>
