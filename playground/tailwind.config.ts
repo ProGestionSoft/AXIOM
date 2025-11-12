@@ -24,6 +24,11 @@ export default {
           900: '#0c3d66',
         },
       },
+      fontFamily: {
+        body: ['"Fira Sans"', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
+        heading: ['"Playwrite México Guides"', 'sans-serif']
+      },
     },
   },
   plugins: [],

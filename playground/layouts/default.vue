@@ -5,14 +5,14 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div class="flex items-center justify-between">
           <!-- Logo -->
-          <NuxtLink to="/" class="flex items-center gap-2 flex-shrink-0">
-            <div
-              class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg flex items-center justify-center">
-              <span class="text-white font-bold text-sm sm:text-lg">A</span>
+          <NuxtLink to="/" class="flex items-center gap-2 hover:scale-105 overflow-hidden transition-all duration-300">
+            <div class="hidden lg:block">
+              <img :src="sharedFiles.paths.logo.dc" alt="Logo" class="h-8 w-auto sm:h-10 dark:hidden" />
+              <img :src="sharedFiles.paths.logo.dw" alt="Logo" class="h-8 w-auto sm:h-10 hidden dark:block" />
             </div>
-            <div class="hidden sm:block">
-              <h1 class="text-lg sm:text-xl font-bold text-gray-900">Axiom</h1>
-              <p class="text-xs text-gray-600">Playground</p>
+            <div class="lg:hidden flex-shrink-0 mr-3">
+              <img :src="sharedFiles.paths.logo.mc" alt="Logo" class="h-8 w-auto sm:h-10 dark:hidden" />
+              <img :src="sharedFiles.paths.logo.mw" alt="Logo" class="h-8 w-auto sm:h-10 hidden dark:block" />
             </div>
           </NuxtLink>
 
@@ -71,9 +71,8 @@
               class="text-primary-400 hover:text-primary-300 transition-colors ml-1">
               ProGestionSoft
             </a>
-            <br class="sm:hidden"> 
-            <span
-              class="text-gray-500 text-xs sm:text-sm">and maintained by the community
+            <br class="sm:hidden">
+            <span class="text-gray-500 text-xs sm:text-sm">and maintained by the community
             </span>
           </p>
 
@@ -90,7 +89,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { IconMenu, IconX } from '@tabler/icons-vue'
+import { useSharedFiles } from '@/stores/sharedFiles';
 
+const sharedFiles = useSharedFiles();
 const isMobileMenuOpen = ref(false)
 
 // navigation

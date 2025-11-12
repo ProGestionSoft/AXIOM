@@ -3,14 +3,14 @@
     <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur-md shadow-sm">
       <div class="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-3">
-          <NuxtLink to="/" class="flex items-center gap-2 rounded-lg p-2 transition-colors hover:bg-slate-100">
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-primary-600 to-primary-800">
-              <span class="text-sm font-bold text-white">A</span>
+          <NuxtLink to="/" class="flex items-center gap-2 hover:scale-105 overflow-hidden transition-all duration-300">
+            <div class="hidden lg:block">
+              <img :src="sharedFiles.paths.logo.dc" alt="Logo" class="h-8 w-auto sm:h-10 dark:hidden" />
+              <img :src="sharedFiles.paths.logo.dw" alt="Logo" class="h-8 w-auto sm:h-10 hidden dark:block" />
             </div>
-            <div :class="{ 'lg:hidden': isSidebarCollapsed }">
-              <h1 class="text-sm font-bold text-slate-900">Axiom</h1>
-              <p class="text-xs text-slate-500">Playground</p>
+            <div class="lg:hidden flex-shrink-0 mr-3">
+              <img :src="sharedFiles.paths.logo.mc" alt="Logo" class="h-8 w-auto sm:h-10 dark:hidden" />
+              <img :src="sharedFiles.paths.logo.mw" alt="Logo" class="h-8 w-auto sm:h-10 hidden dark:block" />
             </div>
           </NuxtLink>
 
@@ -144,7 +144,9 @@ import {
   IconArrowLeft, IconChevronRight, IconMenuDeep, IconX, IconBrandGithub, IconBrandNpm, IconCheck, IconLetterA, IconNumber,
   IconCalendar, IconBox, IconList, IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand
 } from '@tabler/icons-vue'
+import { useSharedFiles } from '@/stores/sharedFiles';
 
+const sharedFiles = useSharedFiles();
 const showMobileSidebar = ref(false);
 const isSidebarCollapsed = ref(false);
 
