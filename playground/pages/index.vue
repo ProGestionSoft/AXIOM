@@ -72,7 +72,7 @@
 
             <!-- Installation Command -->
             <div
-              class="mx-auto max-w-lg rounded-xl bg-slate-950/50 p-6 backdrop-blur-sm ring-1 ring-slate-700 font-heading">
+              class="mx-auto max-w-lg rounded-xl bg-slate-950/50 p-6 backdrop-blur-sm ring-1 ring-slate-700">
               <div class="mb-2 flex items-center justify-between">
                 <span class="text-xs font-medium text-slate-400">INSTALLATION</span>
                 <button :class="[
@@ -95,7 +95,7 @@
                 </button>
               </div>
               <code :class="[
-                'block font-mono text-sm transition-all duration-300',
+                'block text-sm transition-all duration-300',
                 copyAnimation ? 'text-emerald-400 scale-105' : 'text-emerald-400'
               ]" @animationend="copyAnimation = false">
                 npm install @progestionsoft/axiom

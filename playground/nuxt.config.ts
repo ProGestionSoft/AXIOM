@@ -68,7 +68,7 @@ export default defineNuxtConfig({
   googleFonts: {
     display: 'swap',
     families: {
-      'Playwrite+MX+Guides': [400, 500, 600, 700],
+      'Playwrite MX Guides': [400],
       'Poppins': [600, 700],
       'Fira+Sans': [100, 200, 300, 400, 500, 600, 700, 800, 900],
     }

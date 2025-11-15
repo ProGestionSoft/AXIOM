@@ -27,7 +27,7 @@ export default {
       fontFamily: {
         body: ['"Fira Sans"', 'sans-serif'],
         sans: ['Poppins', 'sans-serif'],
-        heading: ['"Playwrite México Guides"', 'sans-serif']
+        heading: ['"Playwrite MX Guides"', 'sans-serif'],
       },
     },
   },
