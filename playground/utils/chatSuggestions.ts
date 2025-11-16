@@ -1,4 +1,3 @@
-// playground/utils/chatSuggestions.ts
 export interface ChatSuggestion {
   text: string;
   category: 'installation' | 'usage' | 'examples' | 'technical' | 'support';
@@ -6,6 +5,7 @@ export interface ChatSuggestion {
 
 export const chatSuggestions: ChatSuggestion[] = [
   // Installation et configuration
+  { text: 'Qu\'est-ce que la librairie @progestionsoft/axiom ?', category: 'installation' },
   { text: 'Comment installer AXIOM avec npm ?', category: 'installation' },
   { text: 'AXIOM fonctionne-t-il avec TypeScript ?', category: 'installation' },
   { text: 'Comment importer AXIOM dans mon projet React ?', category: 'installation' },
