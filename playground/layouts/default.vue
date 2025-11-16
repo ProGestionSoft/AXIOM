@@ -10,6 +10,8 @@
           <slot />
         </div>
       </div>
+
+      <GlobalFeedbackButton />
     </main>
 
     <!-- Footer -->

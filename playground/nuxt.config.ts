@@ -32,6 +32,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
+    mistralApiKey: process.env.NOAH_MISTRAL_KEY,
+    geminiApiKey: process.env.NOAH_GEMINI_KEY,
+    
     public: {
       pgsBaseAPI: process.env.PGS_API_URL,
       pgsSharedFiles: process.env.PGS_SHARED_FILES,
