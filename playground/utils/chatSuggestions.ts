@@ -1,59 +1,58 @@
+// playground/utils/chatSuggestions.ts
 export interface ChatSuggestion {
   text: string;
-  category: 'general' | 'candidate' | 'developper' | 'support' | 'technical';
+  category: 'installation' | 'usage' | 'examples' | 'technical' | 'support';
 }
 
 export const chatSuggestions: ChatSuggestion[] = [
-  // Suggestions générales
-  { text: 'Qu’est-ce que Axiom ?', category: 'general' },
-  { text: 'Quels sont les objectifs de la bibliothèque Axiom ?', category: 'general' },
-  { text: 'Axiom fait-il partie de l’écosystème Pro Gestion Soft ?', category: 'general' },
+  // Installation et configuration
+  { text: 'Comment installer AXIOM avec npm ?', category: 'installation' },
+  { text: 'AXIOM fonctionne-t-il avec TypeScript ?', category: 'installation' },
+  { text: 'Comment importer AXIOM dans mon projet React ?', category: 'installation' },
+  { text: 'Quelle est la différence entre ESM et CommonJS ?', category: 'installation' },
+  { text: 'AXIOM a-t-il des dépendances externes ?', category: 'installation' },
 
+  // Usage général
+  { text: 'Quelles sont toutes les fonctions disponibles ?', category: 'usage' },
+  { text: 'Comment utiliser slugify() pour les URLs ?', category: 'usage' },
+  { text: 'Quelle fonction pour formater des nombres ?', category: 'usage' },
+  { text: 'Comment cloner un objet en profondeur ?', category: 'usage' },
+  { text: 'Comment grouper des données avec groupBy() ?', category: 'usage' },
 
-  // Recruteurs
-  { text: 'Comment installer Axiom dans mon projet ?', category: 'developper' },
-  { text: 'Quels types d’utilitaires Axiom propose-t-il ?', category: 'developper' },
-  { text: 'Comment utiliser les fonctions de manipulation de chaînes ?', category: 'developper' },
-  { text: 'Comment fonctionne le module des tableaux ?', category: 'developper' },
-  { text: 'Comment intégrer Axiom dans un projet Nuxt ou Node ?', category: 'developper' },
-  { text: 'Axiom est-il compatible avec TypeScript ?', category: 'developper' },
-  { text: 'Puis-je utiliser Axiom côté backend Sails.js ?', category: 'developper' },
+  // Exemples concrets
+  { text: 'Montre un exemple avec formatDate()', category: 'examples' },
+  { text: 'Comment utiliser merge() pour fusionner des objets ?', category: 'examples' },
+  { text: 'Donne un exemple de truncate() pour les textes longs', category: 'examples' },
+  { text: 'Comment utiliser chunk() pour paginer un tableau ?', category: 'examples' },
+  { text: 'Exemple avec timeAgo() pour les dates relatives', category: 'examples' },
 
-  // Suggestions de support
-  { text: 'Je rencontre une erreur en utilisant Axiom', category: 'support' },
-  { text: 'Comment contacter l’équipe technique Axiom ?', category: 'support' },
-  { text: 'Proposez-vous une documentation pour les développeurs ?', category: 'support' },
+  // Questions techniques
+  { text: 'AXIOM supporte-t-il le tree-shaking ?', category: 'technical' },
+  { text: 'Comment tester mes fonctions qui utilisent AXIOM ?', category: 'technical' },
+  { text: 'Quelles sont les performances des fonctions ?', category: 'technical' },
+  { text: 'AXIOM fonctionne-t-il avec Deno ou Bun ?', category: 'technical' },
+  { text: 'Comment contribuer au projet AXIOM ?', category: 'technical' },
+
+  // Support et dépannage
+  { text: 'J\'ai une erreur d\'import avec AXIOM', category: 'support' },
   { text: 'Comment signaler un bug ou proposer une amélioration ?', category: 'support' },
+  { text: 'Où trouver la documentation complète ?', category: 'support' },
+  { text: 'AXIOM est-il compatible avec Node.js ?', category: 'support' },
+  { text: 'Comment contacter l\'équipe de support ?', category: 'support' },
 
-  // Suggestions techniques
-  { text: 'Puis-je combiner Axiom avec d’autres bibliothèques ?', category: 'technical' },
-  { text: 'Axiom supporte-t-il le tree-shaking ?', category: 'technical' },
-  { text: 'Où trouver la liste complète des fonctions disponibles ?', category: 'technical' },
-  { text: 'Comment contribuer au développement d’Axiom ?', category: 'technical' },
-  { text: 'Axiom utilise-t-il des dépendances externes ?', category: 'technical' },
+  // Cas d'usage avancés
+  { text: 'Comment utiliser AXIOM dans une application Vue.js ?', category: 'usage' },
+  { text: 'Exemple avec pick() et omit() pour les objets', category: 'examples' },
+  { text: 'Comment utiliser randomString() pour générer des IDs ?', category: 'usage' },
+  { text: 'Quelle fonction pour supprimer les doublons d\'un tableau ?', category: 'usage' },
+  { text: 'Comment arrondir des nombres avec roundTo() ?', category: 'examples' },
 
-  // Suggestions côté candidats
-  { text: 'Comment créer mon profil candidat ?', category: 'candidate' },
-  { text: 'Comment postuler à une offre sur SuitOps HIRE ?', category: 'candidate' },
-  { text: 'Puis-je importer mon CV ou mon profil LinkedIn ?', category: 'candidate' },
-  { text: 'Comment suivre l’évolution de ma candidature ?', category: 'candidate' },
-  { text: 'Comment modifier ou supprimer ma candidature ?', category: 'candidate' },
-  { text: 'Puis-je recevoir des alertes d’emploi selon mon profil ?', category: 'candidate' },
-  { text: 'Est-ce que les recruteurs voient toutes mes informations personnelles ?', category: 'candidate' },
-  { text: 'Comment préparer un entretien via la plateforme ?', category: 'candidate' },
-  { text: 'Que faire si je ne reçois pas de réponse à ma candidature ?', category: 'candidate' },
-  { text: 'Comment mettre en valeur mes compétences sur mon profil ?', category: 'candidate' },
-  { text: 'Puis-je enregistrer des offres pour plus tard ?', category: 'candidate' },
-  { text: 'Comment savoir si mon CV a été consulté ?', category: 'candidate' },
-  { text: 'Y a-t-il des tests ou évaluations sur SuitOps HIRE ?', category: 'candidate' },
-  { text: 'Comment garantir la confidentialité de mes données ?', category: 'candidate' },
-  { text: 'Puis-je être recommandé à une entreprise ?', category: 'candidate' },
-  { text: 'Comment contacter un recruteur via SuitOps HIRE ?', category: 'candidate' },
-  { text: 'Comment participer à des campagnes de recrutement ?', category: 'candidate' },
-  { text: 'Est-ce que HIRE est gratuit pour les candidats ?', category: 'candidate' },
-  { text: 'Puis-je accéder à mes anciennes candidatures ?', category: 'candidate' },
-  { text: 'Comment supprimer mon compte candidat ?', category: 'candidate' }
-
+  // Fonctions spécifiques
+  { text: 'Comment utiliser capitalize() pour les noms propres ?', category: 'usage' },
+  { text: 'Exemple avec flatten() pour les tableaux imbriqués', category: 'examples' },
+  { text: 'Comment utiliser clamp() pour limiter des valeurs ?', category: 'usage' },
+  { text: 'Quelle fonction pour calculer des pourcentages ?', category: 'usage' },
+  { text: 'Comment valider une date avec isValidDate() ?', category: 'usage' }
 ];
 
 /**

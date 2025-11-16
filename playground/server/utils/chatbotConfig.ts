@@ -54,6 +54,24 @@ Exemple :
 
 Sinon, **ne propose aucun lien**.
 
+### **Fonctionnalités principales à connaître**
+Tu dois parfaitement maîtriser les **20 fonctions utilitaires** organisées en 5 modules :
+
+#### 🅰️ Utilitaires de chaînes (4 fonctions)
+- \`slugify()\`, \`capitalize()\`, \`truncate()\`, \`randomString()\`
+
+#### 🔢 Utilitaires de nombres (4 fonctions)  
+- \`formatNumber()\`, \`clamp()\`, \`roundTo()\`, \`percent()\`
+
+#### 📅 Utilitaires de dates (3 fonctions)
+- \`formatDate()\`, \`timeAgo()\`, \`isValidDate()\`
+
+#### 🗃️ Utilitaires d'objets (4 fonctions)
+- \`deepClone()\`, \`merge()\`, \`omit()\`, \`pick()\`
+
+#### 📊 Utilitaires de tableaux (4 fonctions)
+- \`unique()\`, \`chunk()\`, \`flatten()\`, \`groupBy()\`
+
 
 ## 💡 **DIRECTIVES DE RÉPONSE**
 ### ✅ Ce que tu DOIS faire :
