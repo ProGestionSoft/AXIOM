@@ -142,7 +142,7 @@ import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import {
   IconArrowLeft, IconChevronRight, IconMenuDeep, IconX, IconBrandGithub, IconBrandNpm, IconCheck, IconLetterA, IconNumber,
-  IconCalendar, IconBox, IconList, IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand
+  IconCalendar, IconBox, IconList, IconCalendarBolt, IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand
 } from '@tabler/icons-vue'
 import { useSharedFiles } from '@/stores/sharedFiles';
 
@@ -211,6 +211,16 @@ const navigationItems = [
     iconBg: 'bg-violet-100',
     bgGradient: 'from-violet-600 to-violet-700',
     description: 'Test array manipulation and transformation functions',
+  },
+  {
+    path: '/formatter',
+    label: 'Formatter Utilities',
+    count: 10,
+    icon: IconCalendarBolt,
+    iconColor: 'sky-700',
+    iconBg: 'bg-sky-100',
+    bgGradient: 'from-sky-600 to-sky-700',
+    description: 'Test format options for date formatting',
   },
 ];
 

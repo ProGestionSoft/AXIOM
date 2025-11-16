@@ -14,7 +14,14 @@
 
           <!-- Main Title -->
           <h1 class="mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-            Axiom
+            <template v-if="sharedFiles?.paths?.logo?.dc">
+              <img :src="sharedFiles.paths.logo.dc" alt="Axiom"
+                class="inline-block h-20 w-auto sm:h-24 lg:h-28 align-middle mr-3" />
+            </template>
+            <span v-else>
+              Axiom
+            </span>
+
             <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Playground</span>
           </h1>
 
@@ -33,7 +40,7 @@
             </div>
             <div class="h-12 w-px bg-slate-200"></div>
             <div>
-              <div class="text-3xl font-bold text-slate-900">5</div>
+              <div class="text-3xl font-bold text-slate-900">6</div>
               <div class="text-sm text-slate-600">Categories</div>
             </div>
             <div class="h-12 w-px bg-slate-200"></div>
@@ -71,8 +78,7 @@
             </p>
 
             <!-- Installation Command -->
-            <div
-              class="mx-auto max-w-lg rounded-xl bg-slate-950/50 p-6 backdrop-blur-sm ring-1 ring-slate-700">
+            <div class="mx-auto max-w-lg rounded-xl bg-slate-950/50 p-6 backdrop-blur-sm ring-1 ring-slate-700">
               <div class="mb-2 flex items-center justify-between">
                 <span class="text-xs font-medium text-slate-400">INSTALLATION</span>
                 <button :class="[
@@ -98,8 +104,8 @@
                 'block text-sm transition-all duration-300',
                 copyAnimation ? 'text-emerald-400 scale-105' : 'text-emerald-400'
               ]" @animationend="copyAnimation = false">
-                npm install @progestionsoft/axiom
-              </code>
+            npm install @progestionsoft/axiom
+          </code>
             </div>
 
             <!-- Links -->
@@ -169,16 +175,14 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import {
-  IconBrandGithub,
-  IconBrandNpm,
-  IconCircleCheckFilled,
-  IconBolt,
-  IconShieldCheck,
-  IconAdjustmentsAlt,
-  IconCheck,
-  IconX
+  IconBrandGithub, IconBrandNpm, IconCircleCheckFilled, IconBolt, IconShieldCheck, IconAdjustmentsAlt, IconCheck, IconX
 } from '@tabler/icons-vue'
+
+// Importation du store pour accéder aux chemins de logo
+import { useSharedFiles } from '@/stores/sharedFiles';
+const sharedFiles = useSharedFiles();
 
 // Copy functionality
 const copyState = ref<'idle' | 'success' | 'error'>('idle');
@@ -187,7 +191,13 @@ const showToast = ref(false);
 
 const copyToClipboard = async (text: string) => {
   try {
-    await navigator.clipboard.writeText(text);
+    const tempInput = document.createElement('input');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+
     copyState.value = 'success';
     copyAnimation.value = true;
     showToast.value = true;

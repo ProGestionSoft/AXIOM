@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { IconChevronRight, IconLetterA, IconNumber, IconCalendar, IconBox, IconList } from '@tabler/icons-vue'
+import { IconChevronRight, IconLetterA, IconNumber, IconCalendar, IconBox, IconList, IconCalendarBolt } from '@tabler/icons-vue'
 
 interface UtilityCard {
   path: string;
@@ -130,6 +130,19 @@ const utilityCards: UtilityCard[] = [
     tagClass: 'bg-violet-50 text-violet-700',
     textColorClass: 'text-violet-600',
     bgGradientClass: 'from-violet-50 to-transparent'
+  },
+  {
+    path: '/formatter',
+    label: 'Formatter Utilities',
+    description: 'Format options for date formatting',
+    icon: IconCalendarBolt,
+    color: 'sky',
+    tags: ['full', 'compact', 'long', '+7 more'],
+    hoverRingClass: 'hover:ring-2 hover:ring-sky-500',
+    iconBgClass: 'bg-gradient-to-br from-sky-500 to-sky-600 shadow-sky-500/30',
+    tagClass: 'bg-sky-50 text-sky-700',
+    textColorClass: 'text-sky-600',
+    bgGradientClass: 'from-sky-50 to-transparent'
   }
 ]
 </script>
