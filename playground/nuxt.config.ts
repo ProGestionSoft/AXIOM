@@ -59,14 +59,14 @@ export default defineNuxtConfig({
   //   }
   // },
 
-  build: {
-    transpile: ['@progestionsoft/axiom']
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['@progestionsoft/axiom']
-    }
-  },
+  // build: {
+  //   transpile: ['@progestionsoft/axiom']
+  // },
+  // vite: {
+  //   optimizeDeps: {
+  //     include: ['@progestionsoft/axiom']
+  //   }
+  // },
 
   googleFonts: {
     display: 'swap',
