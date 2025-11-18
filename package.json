@@ -1,6 +1,6 @@
 {
   "name": "@progestionsoft/axiom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modern utility library for JavaScript/TypeScript developers",
   "private": false,
   "type": "module",
@@ -14,7 +14,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -31,10 +33,22 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "utilities", "helpers", "typescript", "javascript",
-    "String", "Number", "Date", "Object", "Array",
-    "slugify", "truncate", "formatDate","timeAgo",
-    "deepClone", "merge", "omit"
+    "utilities",
+    "helpers",
+    "typescript",
+    "javascript",
+    "String",
+    "Number",
+    "Date",
+    "Object",
+    "Array",
+    "slugify",
+    "truncate",
+    "formatDate",
+    "timeAgo",
+    "deepClone",
+    "merge",
+    "omit"
   ],
   "author": "ProGestionSoft",
   "license": "MIT",
