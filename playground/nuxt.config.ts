@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     configPath: 'tailwind.config.ts',
   },
 
-  ssr: false,
+  // ssr: false,
 
   // nitro: {
   //   preset: 'netlify-static',
