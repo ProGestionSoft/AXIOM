@@ -1,9 +1,12 @@
+[build]
+  command = "pnpm install && pnpm run build:playground:generate"
+  publish = "playground/dist"
 
+[build.environment]
+  NODE_VERSION = "20"
 
 
 [build]
-  command = "pnpm build:playground"
-  publish = "playground/.output/public"
   functions = "playground/.output/server"
 
 [[redirects]]
