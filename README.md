@@ -14,8 +14,7 @@ Bibliothèque d'utilitaires moderne pour les développeurs JavaScript/TypeScript
 - 🔒 Aucune dépendance
 - 📖 Bien documenté avec des commentaires JSDoc
 
-
-**20 fonctions utilitaires** organisées en 5 modules :
+**21 fonctions utilitaires** organisées en 6 modules :
 
 #### Utilitaires de chaînes de caractères (4 fonctions)
 - `slugify()` - Convertit le texte en slugs compatibles avec les URL
@@ -35,16 +34,20 @@ Bibliothèque d'utilitaires moderne pour les développeurs JavaScript/TypeScript
 - `isValidDate()` - Valide les dates
 
 #### Utilitaires d'objets (4 fonctions)
-- `deepClone()` - Clone les objets en profondeur
-- `merge()` - Fusionne les objets de manière récursive
-- `omit()` - Supprime des clés spécifiques
-- `pick()` - Sélectionne des clés spécifiques
+- `deepClone()` - Crée une copie complète et indépendante d'un objet, y compris tous les niveaux imbriqués
+- `merge()` - Combine plusieurs objets en un seul en fusionnant récursivement leurs propriétés
+- `omit()` - Crée un nouvel objet en excluant certaines propriétés spécifiques
+- `pick()` - Crée un nouvel objet en ne gardant que les propriétés sélectionnées
 
-#### Utilitaires de tableaux (4 fonctions)
+#### Utilitaires de tableaux (5 fonctions)
 - `unique()` - Supprime les doublons
 - `chunk()` - Divise un tableau en plusieurs morceaux
 - `flatten()` - Aplatit les tableaux imbriqués
 - `groupBy()` - Regroupe les éléments par clé/fonction
+- `paginate()` - Pagine un tableau avec plusieurs stratégies (offset, page, cursor)
+
+#### Utilitaires de formatage (1 fonction)
+- `formatTimestamp()` - Formate un timestamp UNIX en différents formats de date lisibles
 
 ## Installation
 
@@ -162,8 +165,6 @@ percent(25, 100); // 25
 percent(1, 3, 2); // 33.33
 ```
 
----
-
 ### Utilitaires de date
 
 #### `formatDate(date: Date | string | number, options?: Intl.DateTimeFormatOptions, locale?: string): string`
@@ -195,13 +196,19 @@ isValidDate('2024-01-15'); // true
 isValidDate('invalid'); // false
 ```
 
----
-
 ### Utilitaires d'objets
+
+Les fonctions d'objets permettent de manipuler les structures de données complexes de manière sûre et efficace.
 
 #### `deepClone<T>(obj: T): T`
 
-Crée un clone profond d'un objet.
+Crée une copie complète et indépendante d'un objet, incluant tous les niveaux imbriqués. Contrairement à une copie superficielle, les modifications sur le clone n'affectent pas l'original.
+
+#### Cas d'usage :
+
+- Créer une copie de données pour les modifier sans affecter l'original
+- Éviter les effets de bord lors de la manipulation d'objets
+- Sauvegarder un état avant modification
 
 ```typescript
 const original = { a: 1, b: { c: 2 } };
@@ -211,7 +218,13 @@ cloned.b.c = 3; // original.b.c reste 2
 
 #### `merge<T>(target: T, ...sources: Partial<T>[]): T`
 
-Fusionne profondément deux objets ou plus.
+Combine plusieurs objets en un seul en fusionnant récursivement leurs propriétés. Les propriétés des objets sources écrasent celles de la cible, mais les objets imbriqués sont fusionnés plutôt que remplacés.
+
+#### Cas d'usage :
+
+- Fusionner des configurations par défaut avec des paramètres utilisateur
+- Combiner plusieurs options partielles en un objet complet
+- Créer des objets composites à partir de plusieurs sources
 
 ```typescript
 merge({ a: 1 }, { b: 2 }, { c: 3 }); // { a: 1, b: 2, c: 3 }
@@ -220,7 +233,13 @@ merge({ a: { x: 1 } }, { a: { y: 2 } }); // { a: { x: 1, y: 2 } }
 
 #### `omit<T, K>(obj: T, keys: K[]): Omit<T, K>`
 
-Crée un nouvel objet en omettant les clés spécifiées.
+Crée un nouvel objet en excluant certaines propriétés spécifiques. Utile pour filtrer les données sensibles ou indésirables.
+
+#### Cas d'usage :
+
+- Supprimer des propriétés sensibles avant d'envoyer des données (ex: mots de passe)
+- Nettoyer des objets en retirant des champs temporaires ou inutiles
+- Préparer des données pour des API qui n'acceptent que certains champs
 
 ```typescript
 omit({ a: 1, b: 2, c: 3 }, ['b', 'c']); // { a: 1 }
@@ -228,13 +247,17 @@ omit({ a: 1, b: 2, c: 3 }, ['b', 'c']); // { a: 1 }
 
 #### `pick<T, K>(obj: T, keys: K[]): Pick<T, K>`
 
-Crée un nouvel objet contenant uniquement les clés spécifiées.
+Crée un nouvel objet en ne gardant que les propriétés sélectionnées. C'est l'inverse de omit.
+
+#### Cas d'usage :
+
+- Extraire seulement les données nécessaires d'un objet volumineux
+- Créer des vues partielles d'objets complexes
+- Sélectionner des champs spécifiques pour une API ou un formulaire
 
 ```typescript
 pick({ a: 1, b: 2, c: 3 }, ['a', 'c']); // { a: 1, c: 3 }
 ```
-
----
 
 ### Utilitaires pour les tableaux
 
@@ -275,6 +298,59 @@ groupBy([{ age: 21 }, { age: 22 }, { age: 21 }], 'age');
 
 groupBy([1.3, 2.1, 2.4], Math.floor);
 // { '1': [1.3], '2': [2.1, 2.4] }
+```
+
+#### `paginate<T>(arr: T[], options: PaginationOptions<T>): PaginationResult<T>`
+
+Pagine un tableau avec plusieurs stratégies : offset, page ou cursor. Retourne les données paginées avec les métadonnées associées.
+
+#### Stratégies de pagination :
+
+1. **Offset-based** : Utilise un décalage (offset) et une limite pour paginer
+2. **Page-based** : Utilise un numéro de page et une taille de page
+3. **Cursor-based** : Utilise un curseur pour naviguer dans les données (idéal pour les flux continus)
+
+```typescript
+// Pagination par offset
+paginate([1, 2, 3, 4, 5], { type: 'offset', offset: 2, limit: 2 })
+// returns { type: 'offset', data: [3, 4], total: 5, hasMore: true, offset: 2, limit: 2 }
+
+// Pagination par page
+paginate([1, 2, 3, 4, 5], { type: 'page', page: 2, pageSize: 2 })
+// returns { type: 'page', data: [3, 4], total: 5, hasMore: true, page: 2, pageSize: 2, totalPages: 3 }
+
+// Pagination par curseur
+const items = [{ id: '1' }, { id: '2' }, { id: '3' }];
+paginate(items, { type: 'cursor', cursor: '1', limit: 2, getCursorValue: item => item.id })
+// returns { type: 'cursor', data: [{ id: '2' }, { id: '3' }], total: 3, hasMore: false, nextCursor: null, prevCursor: '1' }
+```
+
+### Utilitaires de formatage
+
+#### `formatTimestamp(timestamp: number, format?: DateFormatType, locale?: string): string | number`
+
+Formate un timestamp UNIX (en millisecondes) en différents formats de date lisibles.
+
+#### Formats disponibles :
+
+- `'timestamp'` - Retourne le timestamp d'origine (par défaut)
+- `'full'` - Format complet : "vendredi 14 novembre 2025"
+- `'compact'` - Format compact : "vend. 14 novembre 2025"
+- `'long'` - Format long : "14 novembre 2025"
+- `'medium'` - Format moyen : "14 nov. 2025"
+- `'short'` - Format court : "14/11/2025"
+- `'datetime'` - Date et heure : "14 nov. 2025 10:04:02"
+- `'time'` - Heure uniquement : "22:14:03"
+- `'iso'` - Format ISO 8601 : "2025-11-14T22:14:03.001Z"
+- `'relative'` - Format relatif : "il y a 2 jours"
+
+```typescript
+formatTimestamp(1756868642754, 'full'); // "vendredi 14 novembre 2025"
+formatTimestamp(Date.now(), 'relative'); // "il y a 2 jours"
+formatTimestamp(1756868642754, 'iso'); // "2025-11-14T22:14:03.001Z"
+formatTimestamp(1756868642754, 'short'); // "14/11/2025"
+formatTimestamp(1756868642754, 'time'); // "22:14:03"
+formatTimestamp(1756868642754, 'datetime', 'en-US'); // "Nov 14, 2025 10:04:02 PM"
 ```
 
 ## Espace de test
