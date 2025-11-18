@@ -48,26 +48,6 @@ export default defineNuxtConfig({
     configPath: 'tailwind.config.ts',
   },
 
-  // ssr: false,
-
-//  nitro: {
-//   preset: 'netlify', // ou 'netlify-edge'
-//   prerender: {
-//     crawlLinks: true,
-//     routes: ['/sitemap.xml', '/robots.txt'],
-//     ignore: ['/admin']
-//   }
-// },
-
-  // build: {
-  //   transpile: ['@progestionsoft/axiom']
-  // },
-  // vite: {
-  //   optimizeDeps: {
-  //     include: ['@progestionsoft/axiom']
-  //   }
-  // },
-
   googleFonts: {
     display: 'swap',
     families: {
