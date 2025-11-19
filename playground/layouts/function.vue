@@ -105,6 +105,8 @@
         </div>
       </aside>
 
+      <SiteNotificationManager />
+
       <main class="flex-1 overflow-y-auto">
         <div class="sticky top-0 z-30 border-b border-slate-200 bg-white px-4 py-6 sm:px-6 lg:px-8">
           <div class="mx-auto max-w-7xl">
